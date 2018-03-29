@@ -1,0 +1,32 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "debug": true,
+        "modules": false,
+        "useBuiltIns": "usage"
+      }
+    ],
+    "stage-0",
+    "react"
+  ],
+  "plugins": ["transform-pipeline"],
+  "env": {
+    "development": {
+      "plugins": ["react-hot-loader/babel"]
+    },
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "useBuiltIns": "usage"
+          }
+        ],
+        "stage-0",
+        "react"
+      ]
+    }
+  }
+}

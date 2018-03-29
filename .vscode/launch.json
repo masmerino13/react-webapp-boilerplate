@@ -1,0 +1,119 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Node.js Debugger",
+      "protocol": "inspector",
+      "restart": true,
+      "localRoot": "${workspaceRoot}"
+    },
+    {
+      "type": "firefox",
+      "request": "attach",
+      "name": "Attach to Firefox",
+      "reloadOnAttach": true,
+      "webRoot": "${workspaceRoot}",
+      "port": 6000,
+      "skipFiles": [
+        "${workspaceRoot}/node_modules/**",
+        "chrome-extension:/**",
+        "http?(s):/**"
+      ],
+      "pathMappings": [
+        {
+          "url": "webpack:///./~/*",
+          "path": "${webRoot}/node_modules/*"
+        },
+        {
+          "url": "webpack:///./*",
+          "path": "${webRoot}/*"
+        },
+        {
+          "url": "webpack:///*",
+          "path": "*"
+        }
+      ]
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "name": "Launch Firefox against localhost",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "preLaunchTask": "dev",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": [
+        "${workspaceRoot}/node_modules/**",
+        "chrome-extension:/**",
+        "http?(s):/**"
+      ],
+      "pathMappings": [
+        {
+          "url": "webpack:///./~/*",
+          "path": "${webRoot}/node_modules/*"
+        },
+        {
+          "url": "webpack:///./*",
+          "path": "${webRoot}/*"
+        },
+        {
+          "url": "webpack:///*",
+          "path": "*"
+        }
+      ]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "userDataDir": "${workspaceRoot}/.vscode/chrome",
+      "sourceMaps": true,
+      "preLaunchTask": "dev",
+      "smartStep": true,
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": [
+        "${workspaceRoot}/node_modules/**",
+        "chrome-extension:/**",
+        "http?(s):/**"
+      ],
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///*": "*"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "port": 9222,
+      "webRoot": "${workspaceRoot}",
+      "smartStep": true,
+      "showAsyncStacks": true,
+      "skipFiles": [
+        "${workspaceRoot}/node_modules/**",
+        "chrome-extension:/**",
+        "http?(s):/**"
+      ],
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///*": "*"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "name": "Launch Jest tests",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "args": ["-i"],
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}
